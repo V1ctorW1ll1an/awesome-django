@@ -14,9 +14,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '<a string of random characters>')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG') == "True"
 
-ALLOWED_HOSTS = [os.environ.get('DOMAIN'),]
+ALLOWED_HOSTS = [os.environ.get('DOMAIN'), ]
 if DEBUG:
-    ALLOWED_HOSTS = ["*",]
+    ALLOWED_HOSTS = ["*", ]
 
 # Redirect to HTTPS by default, unless explicitly disabled
 SECURE_SSL_REDIRECT = os.environ.get('SECURE_SSL_REDIRECT') != "False"
@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic',  # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
+    # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
@@ -79,6 +80,14 @@ INSTALLED_APPS = [
     'djangocms_bootstrap4.contrib.bootstrap4_picture',
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
+
+    # third apps
+    # project apps
+    'apps.person',
+
+
+    # Plugins
+    "frontend.plugins.form"
 ]
 
 MIDDLEWARE = [
