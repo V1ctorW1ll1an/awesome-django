@@ -23,7 +23,7 @@ docker-compose run web python manage.py createsuperuser
 docker-compose up -d
 ```
 
-Note: Since Compose V2, `docker-compose` is now included inside docker. For more information, checkout the [Compose V2](https://docs.docker.com/compose/cli-command/) Documentation.
+Note: [docker-compose](https://docs.docker.com/compose/cli-command/) 
 
 #### Updating requirements
 
