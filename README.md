@@ -2,7 +2,7 @@
 
 This version uses Python running and the most up-to-date versions of Django 3.1 and django CMS 3.8.
 
-This project is 3.9.5
+This project use python 3.9
 
 ## Installation
 
@@ -16,11 +16,11 @@ You need to have docker installed on your system to run this project.
 ```bash
 git clone git@github.com:V1ctorW1ll1an/awesome-django.git
 cd awesome-django
-docker-compose build web
 docker-compose up -d database_default
-docker-compose run web python manage.py migrate
-docker-compose run web python manage.py createsuperuser
 docker-compose up -d
+docker-compose exec -it /bin/sh
+inside sh run:
+  python manage.py createsuperuser
 ```
 
 Note: [docker-compose](https://docs.docker.com/compose/cli-command/) 
