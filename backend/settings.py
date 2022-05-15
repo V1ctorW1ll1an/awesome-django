@@ -201,19 +201,33 @@ if not DEBUG:
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+# LANGUAGE_CODE = 'en'
 
-LANGUAGES = [
-    ('en', 'English'),
-]
+# LANGUAGES = [
+#     ('en', 'English'),
+# ]
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+
+# USE_I18N = True
+
+# USE_L10N = True
+
+# USE_TZ = True
+
+LANGUAGE_CODE = 'pt-br'
+
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
+
+LANGUAGES = [
+    ('pt-br', 'Portuguese'),
+]
 
 
 # Static files (CSS, JavaScript, Images)
