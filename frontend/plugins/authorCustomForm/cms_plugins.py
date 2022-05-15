@@ -19,7 +19,7 @@ class AuthorCustomFormPlugin(CMSPluginBase):
         request = context.get('request')
         form = AuthorCustomForm()
         context.update({
-            'form': form,
+            'form_author': form,
             'form_action': '',
             'form_method': 'POST'
         })

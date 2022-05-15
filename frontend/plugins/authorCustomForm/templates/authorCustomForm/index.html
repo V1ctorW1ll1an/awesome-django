@@ -8,6 +8,22 @@
     </div>
     <div class="row">
         <form action="{{form_action}}" method="{{form_method}}">
+            {% csrf_token %} 
+            <div class="row">
+                {% for field in form_author %}
+                    <div class="col-12 mb-3">
+                        <label for="{{field.id_for_label}}" class="form-label">{{field.label}}</label>
+                        {{field}}
+                        <p class="text-danger">{{field.errors.as_text}}</p>
+                        {% comment %} <input id="firstName" name="first_name" type="text" class="form-control" placeholder="First name" aria-label="First name"> {% endcomment %}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
         </form>
     </div>
 </div>
