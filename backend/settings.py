@@ -104,10 +104,10 @@ INSTALLED_APPS = [
     # third apps
     # project apps
     'apps.person',
-
+    'apps.authors',
 
     # Plugins
-    "frontend.plugins.form"
+    "frontend.plugins.authorCustomForm"
 ]
 
 MIDDLEWARE = [
