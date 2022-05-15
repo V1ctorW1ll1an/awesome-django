@@ -1,34 +1,45 @@
 import os
 from distutils.debug import DEBUG
+from lib2to3.pytree import convert
 from pathlib import Path
 
 import dj_database_url
+import environ
 from django_storage_url import dsn_configured_storage_class
+
+from backend.utils.string_bool import convert_bool
+
+# Initialise environment variables
+env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Take environment variables from .env file
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', '<a string of random characters>')
+# Raises Django's ImproperlyConfigured
+# exception if SECRET_KEY not in os.environ
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# TODO add to .env
-# DEBUG = os.environ.get('DEBUG') == "True"
-DEBUG = True
+# False if not in os.environ because of casting above
+DEBUG = convert_bool(env('DEBUG'))
 
 # TODO add to .env
-# ALLOWED_HOSTS = [os.environ.get('DOMAIN'), ]
+ALLOWED_HOSTS = [env('DOMAIN'), ]
 if DEBUG:
     ALLOWED_HOSTS = ["*", ]
 
 # Redirect to HTTPS by default, unless explicitly disabled
 # TODO add to .env
 # SECURE_SSL_REDIRECT = os.environ.get('SECURE_SSL_REDIRECT') != "False"
-SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = False
-SECURE_SSL_REDIRECT = False
-CLEAR_CACHE_ON_RESTART = True
+SESSION_COOKIE_SECURE = convert_bool(env('SESSION_COOKIE_SECURE'))
+CSRF_COOKIE_SECURE = convert_bool(env('CSRF_COOKIE_SECURE'))
+SECURE_SSL_REDIRECT = convert_bool(env('SECURE_SSL_REDIRECT'))
+CLEAR_CACHE_ON_RESTART = convert_bool(env('CLEAR_CACHE_ON_RESTART'))
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
@@ -143,13 +154,7 @@ TEMPLATES = [
 ]
 
 CMS_TEMPLATES = [
-    # a minimal template to get started with
-    ('minimal.html', 'Minimal template'),
-    ('whitenoise-static-files-demo.html', 'Static File Demo'),
-
-    # optional templates that extend base.html, to be used with Bootstrap 5
     ('page.html', 'Main page'),
-    ('feature.html', 'Bootstrap 4 Demo with two placeholders'),
 ]
 
 WSGI_APPLICATION = 'backend.wsgi.application'
@@ -158,18 +163,17 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# Configure database using DATABASE_URL; fall back to sqlite in memory when no
-# environment variable is available, e.g. during Docker build
-# TODO add to .env
+
 # DATABASE_URL = os.environ.get('DATABASE_URL', 'sqlite://:memory:')
+# if you are running the project through docker, use the compose host defined as service
 DATABASES = {
     'default': {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "postgres",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "HOST": "localhost",
-        "PORT": 5432,
+        "NAME": env('DATABASE_NAME'),
+        "USER": env('DATABASE_USER'),
+        "PASSWORD": env('DATABASE_PASSWORD'),
+        "HOST": env('DATABASE_HOST'),
+        "PORT": int(env('DATABASE_PORT')),
     }
 }
 
