@@ -49,6 +49,8 @@ django-cms==3.10.0
     #   djangocms-style
     #   djangocms-text-ckeditor
     #   djangocms-video
+django-environ==0.8.1
+    # via -r requirements.in
 django-filer @ https://github.com/django-cms/django-filer/archive/refs/tags/2.1.1.zip
     # via
     #   -r requirements.in
