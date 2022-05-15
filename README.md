@@ -34,6 +34,7 @@ inside sh run:
 ```bash
 git clone git@github.com:V1ctorW1ll1an/awesome-django.git
 cd awesome-django
+docker-compose up -d database_default
 python -m venv venv
 source venv/bin/activate
 pip install "pip<22"
