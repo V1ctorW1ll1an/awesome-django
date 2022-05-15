@@ -10,10 +10,10 @@
     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
         {% for node in children%}
             {% if node.get_menu_title == "home" %} 
-                <li><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-house"></i></a></li>
+                <li><a href="{{node.get_absolute_url}}" class="nav-link px-2 text-white"><i class="fa-solid fa-house"></i></a></li>
             {% endif %}
             {% for child in node.children%}
-                <li><a href="#" class="nav-link px-2 text-white">{{child.get_menu_title}}</a></li>
+                <li><a href="{{child.get_absolute_url}}" class="nav-link px-2 text-white">{{child.get_menu_title}}</a></li>
             {% endfor %}
         {% endfor %}
     </ul>
