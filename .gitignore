@@ -1,6 +1,7 @@
 # Python
 venv
 env
+.env
 *.pyc
 *.pyo
 db.sqlite3
