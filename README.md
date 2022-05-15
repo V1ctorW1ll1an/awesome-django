@@ -13,6 +13,10 @@ You need to have docker installed on your system to run this project.
 
 ## Try it
 
+### With docker-compose
+
+<br>
+
 ```bash
 git clone git@github.com:V1ctorW1ll1an/awesome-django.git
 cd awesome-django
@@ -23,7 +27,24 @@ inside sh run:
   python manage.py createsuperuser
 ```
 
-Note: [docker-compose](https://docs.docker.com/compose/cli-command/) 
+<br>
+
+### With Venv
+
+```bash
+git clone git@github.com:V1ctorW1ll1an/awesome-django.git
+cd awesome-django
+python -m venv venv
+source venv/bin/activate
+pip install "pip<22"
+pip install requirements.txt
+python manage.py collectstatic --noinput
+python makemigrations
+python migrate
+python manage.py runserver
+```
+
+Note: Use database of a docker container [docker-compose](https://docs.docker.com/compose/cli-command/)
 
 #### Updating requirements
 

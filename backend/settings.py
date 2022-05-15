@@ -1,4 +1,5 @@
 import os
+from distutils.debug import DEBUG
 from pathlib import Path
 
 import dj_database_url
@@ -12,14 +13,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '<a string of random characters>')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG') == "True"
+# TODO add to .env
+# DEBUG = os.environ.get('DEBUG') == "True"
+DEBUG = True
 
-ALLOWED_HOSTS = [os.environ.get('DOMAIN'), ]
+# TODO add to .env
+# ALLOWED_HOSTS = [os.environ.get('DOMAIN'), ]
 if DEBUG:
     ALLOWED_HOSTS = ["*", ]
 
 # Redirect to HTTPS by default, unless explicitly disabled
-SECURE_SSL_REDIRECT = os.environ.get('SECURE_SSL_REDIRECT') != "False"
+# TODO add to .env
+# SECURE_SSL_REDIRECT = os.environ.get('SECURE_SSL_REDIRECT') != "False"
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+SECURE_SSL_REDIRECT = False
+CLEAR_CACHE_ON_RESTART = True
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
@@ -151,8 +160,18 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Configure database using DATABASE_URL; fall back to sqlite in memory when no
 # environment variable is available, e.g. during Docker build
-DATABASE_URL = os.environ.get('DATABASE_URL', 'sqlite://:memory:')
-DATABASES = {'default': dj_database_url.parse(DATABASE_URL)}
+# TODO add to .env
+# DATABASE_URL = os.environ.get('DATABASE_URL', 'sqlite://:memory:')
+DATABASES = {
+    'default': {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "postgres",
+        "USER": "postgres",
+        "PASSWORD": "postgres",
+        "HOST": "localhost",
+        "PORT": 5432,
+    }
+}
 
 
 # Password validation
@@ -205,6 +224,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # read the setting value from the environment variable
 DEFAULT_STORAGE_DSN = os.environ.get('DEFAULT_STORAGE_DSN')
+if not DEFAULT_STORAGE_DSN:
+    DEFAULT_STORAGE_DSN = "file:///data/media/?url=%2Fmedia%2F"
 
 # dsn_configured_storage_class() requires the name of the setting
 DefaultStorageClass = dsn_configured_storage_class('DEFAULT_STORAGE_DSN')
