@@ -1,4 +1,7 @@
 <div class="container">
+
+    <!-- Titulo -->
+
     <div class="row mt-5">
         <div class="col">
             <div class="d-flex align-items-center justify-content-center">
@@ -6,24 +9,37 @@
             </div>
         </div>
     </div>
+
+    <!-- Formulário -->
+
     <div class="row">
-        <form action="{{form_action}}" method="{{form_method}}">
-            {% csrf_token %} 
-            <div class="row">
-                {% for field in form_author %}
-                    <div class="col-12 mb-3">
-                        <label for="{{field.id_for_label}}" class="form-label">{{field.label}}</label>
-                        {{field}}
-                        <p class="text-danger">{{field.errors.as_text}}</p>
-                        {% comment %} <input id="firstName" name="first_name" type="text" class="form-control" placeholder="First name" aria-label="First name"> {% endcomment %}
+        <div class="col-12">
+            <div class="d-flex align-items-center justify-content-center">
+                <form action="{{form_action}}" method="{{form_method}}">
+                    {% csrf_token %} 
+                    <div class="row mt-5">
+                        {% with field=form_author.first_name %}
+                            <div class="col-12 mb-3">
+                                <label for="{{field.id_for_label}}" class="form-label me-3 d-block">{{field.label}}</label>
+                                {{field}}
+                                <p class="text-danger">{{field.errors.as_text}}</p>
+                            </div>
+                        {% endwith %}
+                        {% with field=form_author.last_name %}
+                            <div class="col-12 mb-3">
+                                <label for="{{field.id_for_label}}" class="form-label me-3 d-block">{{field.label}}</label>
+                                {{field}}
+                                <p class="text-danger">{{field.errors.as_text}}</p>
+                            </div>
+                        {% endwith %}
                     </div>
-                {% endfor %}
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
 </div>

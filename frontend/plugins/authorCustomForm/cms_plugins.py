@@ -18,9 +18,14 @@ class AuthorCustomFormPlugin(CMSPluginBase):
             context, instance, placeholder)
         request = context.get('request')
         form = AuthorCustomForm()
+
+        if request.POST:
+            form = AuthorCustomForm(request.POST, request.FILES)
+
         context.update({
             'form_author': form,
             'form_action': '',
             'form_method': 'POST'
         })
+
         return context
