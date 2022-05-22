@@ -5,15 +5,14 @@ from pathlib import Path
 
 import dj_database_url
 import environ
-from django_storage_url import dsn_configured_storage_class
-
 from backend.utils.string_bool import convert_bool
+from django_storage_url import dsn_configured_storage_class
 
 # Initialise environment variables
 env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Take environment variables from .env file
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
@@ -84,22 +83,22 @@ INSTALLED_APPS = [
     'djangocms_googlemap',
     'djangocms_video',
 
-    # optional django CMS Bootstrap 4 modules
-    'djangocms_bootstrap4',
-    'djangocms_bootstrap4.contrib.bootstrap4_alerts',
-    'djangocms_bootstrap4.contrib.bootstrap4_badge',
-    'djangocms_bootstrap4.contrib.bootstrap4_card',
-    'djangocms_bootstrap4.contrib.bootstrap4_carousel',
-    'djangocms_bootstrap4.contrib.bootstrap4_collapse',
-    'djangocms_bootstrap4.contrib.bootstrap4_content',
-    'djangocms_bootstrap4.contrib.bootstrap4_grid',
-    'djangocms_bootstrap4.contrib.bootstrap4_jumbotron',
-    'djangocms_bootstrap4.contrib.bootstrap4_link',
-    'djangocms_bootstrap4.contrib.bootstrap4_listgroup',
-    'djangocms_bootstrap4.contrib.bootstrap4_media',
-    'djangocms_bootstrap4.contrib.bootstrap4_picture',
-    'djangocms_bootstrap4.contrib.bootstrap4_tabs',
-    'djangocms_bootstrap4.contrib.bootstrap4_utilities',
+    # optional django CMS Bootstrap 5 modules
+    'djangocms_bootstrap5',
+    'djangocms_bootstrap5.contrib.bootstrap5_alerts',
+    'djangocms_bootstrap5.contrib.bootstrap5_badge',
+    'djangocms_bootstrap5.contrib.bootstrap5_card',
+    'djangocms_bootstrap5.contrib.bootstrap5_carousel',
+    'djangocms_bootstrap5.contrib.bootstrap5_collapse',
+    'djangocms_bootstrap5.contrib.bootstrap5_content',
+    'djangocms_bootstrap5.contrib.bootstrap5_grid',
+    'djangocms_bootstrap5.contrib.bootstrap5_jumbotron',
+    'djangocms_bootstrap5.contrib.bootstrap5_link',
+    'djangocms_bootstrap5.contrib.bootstrap5_listgroup',
+    'djangocms_bootstrap5.contrib.bootstrap5_media',
+    'djangocms_bootstrap5.contrib.bootstrap5_picture',
+    'djangocms_bootstrap5.contrib.bootstrap5_tabs',
+    'djangocms_bootstrap5.contrib.bootstrap5_utilities',
 
     # third apps
     # project apps
@@ -166,16 +165,6 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # DATABASE_URL = os.environ.get('DATABASE_URL', 'sqlite://:memory:')
 # if you are running the project through docker, use the compose host defined as service
-DATABASES = {
-    'default': {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": env('DATABASE_NAME'),
-        "USER": env('DATABASE_USER'),
-        "PASSWORD": env('DATABASE_PASSWORD'),
-        "HOST": env('DATABASE_HOST'),
-        "PORT": int(env('DATABASE_PORT')),
-    }
-}
 
 
 # Password validation
@@ -249,7 +238,7 @@ if not DEFAULT_STORAGE_DSN:
 DefaultStorageClass = dsn_configured_storage_class('DEFAULT_STORAGE_DSN')
 
 # Django's DEFAULT_FILE_STORAGE requires the class name
-DEFAULT_FILE_STORAGE = 'backend.settings.DefaultStorageClass'
+DEFAULT_FILE_STORAGE = 'backend.settings.dev_settings.DefaultStorageClass'
 
 # only required for local file storage and serving, in development
 MEDIA_URL = 'media/'

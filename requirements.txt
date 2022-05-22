@@ -8,6 +8,8 @@ asgiref==3.4.1
     # via django
 autopep8==1.6.0
     # via -r requirements.in
+beautifulsoup4==4.11.1
+    # via django-bootstrap-v5
 boto3==1.14.49
     # via -r requirements.in
 botocore==1.17.63
@@ -23,6 +25,7 @@ dj-database-url==0.5.0
 django==3.1.14
     # via
     #   -r requirements.in
+    #   django-bootstrap-v5
     #   django-classy-tags
     #   django-cms
     #   django-formtools
@@ -31,6 +34,8 @@ django==3.1.14
     #   django-storages
     #   django-treebeard
     #   easy-thumbnails
+django-bootstrap-v5==1.0.11
+    # via -r requirements.in
 django-classy-tags==2.0.0
     # via
     #   -r requirements.in
@@ -40,7 +45,7 @@ django-cms==3.10.0
     # via
     #   -r requirements.in
     #   djangocms-attributes-field
-    #   djangocms-bootstrap4
+    #   djangocms-bootstrap5
     #   djangocms-file
     #   djangocms-googlemap
     #   djangocms-icon
@@ -54,7 +59,7 @@ django-environ==0.8.1
 django-filer @ https://github.com/django-cms/django-filer/archive/refs/tags/2.1.1.zip
     # via
     #   -r requirements.in
-    #   djangocms-bootstrap4
+    #   djangocms-bootstrap5
     #   djangocms-file
     #   djangocms-googlemap
     #   djangocms-link
@@ -78,14 +83,14 @@ djangocms-admin-style==2.0.2
     #   django-cms
 djangocms-attributes-field==2.0.0
     # via
-    #   djangocms-bootstrap4
+    #   djangocms-bootstrap5
     #   djangocms-file
     #   djangocms-icon
     #   djangocms-link
     #   djangocms-picture
     #   djangocms-style
     #   djangocms-video
-djangocms-bootstrap4==2.0.0
+djangocms-bootstrap5==0.1.0
     # via -r requirements.in
 djangocms-file==3.0.0
     # via -r requirements.in
@@ -94,21 +99,21 @@ djangocms-googlemap==2.0.0
 djangocms-icon==2.0.0
     # via
     #   -r requirements.in
-    #   djangocms-bootstrap4
+    #   djangocms-bootstrap5
 djangocms-link==3.0.0
     # via
     #   -r requirements.in
-    #   djangocms-bootstrap4
+    #   djangocms-bootstrap5
 djangocms-picture==3.0.0
     # via
     #   -r requirements.in
-    #   djangocms-bootstrap4
+    #   djangocms-bootstrap5
 djangocms-style==3.0.0
     # via -r requirements.in
 djangocms-text-ckeditor==4.0.0
     # via
     #   -r requirements.in
-    #   djangocms-bootstrap4
+    #   djangocms-bootstrap5
 djangocms-video==3.0.0
     # via -r requirements.in
 docutils==0.15.2
@@ -161,6 +166,8 @@ six==1.16.0
     #   html5lib
     #   orderedmultidict
     #   python-dateutil
+soupsieve==2.3.2.post1
+    # via beautifulsoup4
 sqlparse==0.4.2
     # via django
 svglib==1.1.0

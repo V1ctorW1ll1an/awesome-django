@@ -36,7 +36,7 @@ djangocms-picture>=3.0,<4.0
 
 easy-thumbnails==2.8.0
 # optional django CMS Bootstrap 4 modules
-djangocms-bootstrap4>=2.0,<3.0
+djangocms-bootstrap5
 # optional django CMS Bootstrap 5 modules (alpha) - requires BS5 frontend setup in the templates
 # as of Q4 2021 there are still basic issues with djangocms-bootstrap5
 # https://github.com/gl-agnx/djangocms-bootstrap5/archive/refs/heads/master.zip#egg=djangocms_bootstrap5
@@ -47,3 +47,4 @@ https://github.com/django-cms/django-filer/archive/refs/tags/2.1.1.zip#egg=djang
 pip-tools  # needed for compilation of this file into requirements.txt, see start of file
 autopep8 # auto format python files
 django-environ>=0.8.1
+django-bootstrap-v5
